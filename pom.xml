@@ -4,13 +4,15 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>register</module>
-        <module>nacos-provider</module>
         <module>nacos-discovery</module>
         <module>nacos-gateway</module>
         <module>config</module>
         <module>commons</module>
         <module>user-provider</module>
+        <module>account-provider</module>
+        <module>goods-provider</module>
+        <module>item-provider</module>
+        <module>business-provider</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -31,6 +33,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
