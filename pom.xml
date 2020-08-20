@@ -4,9 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>nacos-discovery</module>
         <module>nacos-gateway</module>
-        <module>config</module>
         <module>commons</module>
         <module>user-provider</module>
         <module>account-provider</module>
