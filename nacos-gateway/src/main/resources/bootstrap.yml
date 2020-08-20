@@ -3,6 +3,60 @@ spring:
     name: nacos-gateway-server
   cloud:
     nacos:
-      config:
+#      config:
+#        server-addr: 192.168.0.107:8848
+#        file-extension: yaml
+      discovery:
         server-addr: 192.168.0.107:8848
-        file-extension: yaml
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+      - id: nacos-config-server
+        uri: lb://nacos-config-server
+        predicates:
+        - Path=/v1/api/**
+        filters:
+        - StripPrefix=2
+      - id: seata-user-provider
+        uri: lb://seata-user-provider
+        predicates:
+        - Path=/user/api/**
+        filters:
+        - StripPrefix=2
+      - id: seata-account-provider
+        uri: lb://seata-account-provider
+        predicates:
+        - Path=/account/api/**
+        filters:
+        - StripPrefix=2
+      - id: seata-goods-provider
+        uri: lb://seata-goods-provider
+        predicates:
+        - Path=/goods/api/**
+        filters:
+        - StripPrefix=2
+      - id: seata-item-provider
+        uri: lb://seata-item-provider
+        predicates:
+        - Path=/item/api/**
+        filters:
+        - StripPrefix=2
+      - id: seata-business-provider
+        uri: lb://seata-business-provider
+        predicates:
+        - Path=/purchse/api/**
+        filters:
+        - StripPrefix=2
+
+server:
+  port: 9999
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

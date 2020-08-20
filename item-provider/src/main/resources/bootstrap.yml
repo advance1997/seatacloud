@@ -1,12 +1,43 @@
 spring:
   application:
     name: seata-item-provider
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://152.136.97.217:3306/seata-order?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&nullNamePatternMatchesAll=true&useSSL=false
+    username: root
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 60000000
+      maximum-pool-size: 10
+      auto-commit: true
+      pool-name: HikariCP
+      max-lifetime: 18000000
+      connection-timeout: 300000
+      connection-test-query: SELECT 1
   cloud:
     nacos:
-      config:
-        file-extension: yaml
-        server-addr: 192.168.0.107:8848
+#      config:
+#        file-extension: yaml
+#        server-addr: 192.168.0.107:8848
       discovery:
         server-addr: 192.168.0.107:8848
+    alibaba:
+      seata:
+        tx-service-group: my_test_tx_group
 
+server:
+  port: 18005
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    call-setters-on-nulls: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 
